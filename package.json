@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/hstandaert/sysloggy#readme",
   "dependencies": {
-    "commander": "^8.1.0"
+    "colors": "^1.4.0",
+    "commander": "^8.1.0",
+    "ora": "^5.4.1"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
