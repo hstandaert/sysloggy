@@ -20,12 +20,15 @@
   },
   "homepage": "https://github.com/hstandaert/sysloggy#readme",
   "dependencies": {
+    "cli-table": "^0.3.6",
     "colors": "^1.4.0",
     "commander": "^8.1.0",
+    "date-fns": "^2.23.0",
     "ora": "^5.4.1"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
+    "@types/cli-table": "^0.3.0",
     "@types/node": "^16.7.13",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
