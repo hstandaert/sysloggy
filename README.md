@@ -4,6 +4,8 @@
 
 # Sysloggy
 
+[![npm package](https://img.shields.io/npm/v/sysloggy)](https://www.npmjs.com/package/sysloggy) [![Continuous Integration](https://github.com/hstandaert/sysloggy/actions/workflows/ci.yml/badge.svg)](https://github.com/hstandaert/sysloggy/actions/workflows/ci.yml) ![node version](https://img.shields.io/node/v/sysloggy) ![platform](https://img.shields.io/badge/platform-osx-lightgrey)
+
 A CLI tool that helps you to fill in your timesheets and/or determine whether you're done for the day.
 
 - [Usage](#usage)
