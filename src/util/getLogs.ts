@@ -5,6 +5,7 @@ import ora from "ora"
 import { exit } from "process"
 import { DateFormats } from "../types/datetime"
 import { Log } from "../types/system"
+import oneLine from "./oneLine"
 
 const parseLog = (input: string): Log => ({
   date: new Date(input.substr(0, 31)),
@@ -22,7 +23,18 @@ const getLogs = async (date: Date): Promise<Log[]> => {
   return new Promise((resolve, reject) => {
     try {
       shell.exec(
-        `log show --style syslog --predicate 'process == "loginwindow" && eventMessage CONTAINS[c] "LWScreenLock UserActivityChanged" && eventMessage CONTAINS[c] "isActive:"' --debug --info --start "${formattedDate} 00:00:00" --end "${formattedDate} 23:59:59"`,
+        oneLine(`
+          log show
+            --style syslog
+            --predicate
+              'process == "loginwindow" &&
+              (eventMessage CONTAINS[c] "LWScreenLock UserActivityChanged" && eventMessage CONTAINS[c] "isActive:") ||
+              (eventMessage CONTAINS[c] "finished in loginwindow, this is a shutdown or restart")'
+            --debug
+            --info
+            --start "${formattedDate} 00:00:00"
+            --end "${formattedDate} 23:59:59"
+        `),
         (error: ExecException | null, stdout: string) => {
           const logs = stdout
             .split("\n")
