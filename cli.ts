@@ -14,7 +14,7 @@ program
   .description(packageJson.description)
   .showHelpAfterError()
 
-options.map(({ required, ...option }) => {
+options.forEach(({ required, ...option }) => {
   const args = parseOption(option)
 
   if (required) {

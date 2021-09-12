@@ -1,13 +1,13 @@
 import { format } from "date-fns"
 import { Option } from "./types/commander"
-import { DATE_FORMATS } from "./types/datetime"
+import { DateFormats } from "./types/datetime"
 
 const options = (<T>(o: readonly Option<T>[]) => o)([
   {
     name: "date",
     valueName: "dd/mm/YYYY",
     description: "Date to show logs for. Defaults to today",
-    defaultValue: format(new Date(), DATE_FORMATS.DATE)
+    defaultValue: format(new Date(), DateFormats.DATE)
   }
 ] as const)
 

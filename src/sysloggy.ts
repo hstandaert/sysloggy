@@ -4,13 +4,13 @@ import { format, formatDuration, parse } from "date-fns"
 import emoji from "node-emoji"
 import { exit } from "process"
 import { OptionValues } from "./options"
-import { DATE_FORMATS } from "./types/datetime"
+import { DateFormats } from "./types/datetime"
 import { Log, LogGroup } from "./types/system"
 import getLogs from "./util/getLogs"
 import isDateValid from "./util/isDateValid"
 import msToTime from "./util/msToTime"
 
-const groupLogs = (logs: Log[], isToday: boolean) => {
+const groupLogs = (logs: Log[], isToday: boolean): LogGroup[] => {
   const groups: LogGroup[] = []
 
   let index = 0
@@ -20,7 +20,7 @@ const groupLogs = (logs: Log[], isToday: boolean) => {
 
     if (!startLog.active) {
       logs.shift()
-      continue
+      continue // eslint-disable-line no-continue
     }
 
     if (endLog || isToday) {
@@ -37,13 +37,13 @@ const groupLogs = (logs: Log[], isToday: boolean) => {
 }
 
 const sysloggy = async (options: OptionValues) => {
-  const logDate = parse(options.date, DATE_FORMATS.DATE, new Date())
+  const logDate = parse(options.date, DateFormats.DATE, new Date())
   if (!isDateValid(logDate)) {
     console.log()
     console.log(
       `${emoji.get("x")} Woops, looks like ${
         options.date.red
-      } isn't a valid date. Make sure you format it like '${DATE_FORMATS.DATE}'`
+      } isn't a valid date. Make sure you format it like '${DateFormats.DATE}'`
     )
     exit(1)
   }
@@ -62,8 +62,8 @@ const sysloggy = async (options: OptionValues) => {
       total += distance
 
       return [
-        format(start, DATE_FORMATS.DATETIME),
-        format(end, DATE_FORMATS.DATETIME),
+        format(start, DateFormats.DATETIME),
+        format(end, DateFormats.DATETIME),
         formatDuration(msToTime(distance)).magenta
       ]
     })

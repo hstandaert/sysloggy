@@ -11,14 +11,12 @@ const parseOption = ({
   valueName,
   description,
   defaultValue
-}: Option): ParsedOptionTuple => {
-  return [
-    `-${name.charAt(0).toUpperCase()}, --${name}${
-      valueName && ` <${valueName}>`
-    }`,
-    description,
-    defaultValue
-  ]
-}
+}: Option): ParsedOptionTuple => [
+  `-${name.charAt(0).toUpperCase()}, --${name}${
+    valueName && ` <${valueName}>`
+  }`,
+  description,
+  defaultValue
+]
 
 export default parseOption
