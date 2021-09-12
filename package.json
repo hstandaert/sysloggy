@@ -1,6 +1,6 @@
 {
   "name": "sysloggy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A CLI tool that tells you if you can go home for the day",
   "main": "lib/cli.js",
   "bin": {
